@@ -1,9 +1,9 @@
 # Lab 10 MNIST and Dropout
 import tensorflow as tf
-import random
 # import matplotlib.pyplot as plt
 
 from tensorflow.examples.tutorials.mnist import input_data
+import secrets
 
 tf.set_random_seed(777)  # reproducibility
 
@@ -85,7 +85,7 @@ print('Accuracy:', sess.run(accuracy, feed_dict={
       X: mnist.test.images, Y: mnist.test.labels, keep_prob: 1}))
 
 # Get one and predict
-r = random.randint(0, mnist.test.num_examples - 1)
+r = secrets.SystemRandom().randint(0, mnist.test.num_examples - 1)
 print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r + 1], 1)))
 print("Prediction: ", sess.run(
     tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r + 1], keep_prob: 1}))

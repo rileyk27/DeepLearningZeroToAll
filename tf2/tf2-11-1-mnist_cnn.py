@@ -1,7 +1,7 @@
 # Lab 11 MNIST and Convolutional Neural Network
 import numpy as np
 import tensorflow as tf
-import random
+import secrets
 
 mnist = tf.keras.datasets.mnist
 
@@ -41,7 +41,7 @@ tf.model.fit(x_train, y_train, batch_size=batch_size, epochs=training_epochs)
 # predict 10 random hand-writing data
 y_predicted = tf.model.predict(x_test)
 for x in range(0, 10):
-    random_index = random.randint(0, x_test.shape[0]-1)
+    random_index = secrets.SystemRandom().randint(0, x_test.shape[0]-1)
     print("index: ", random_index,
           "actual y: ", np.argmax(y_test[random_index]),
           "predicted y: ", np.argmax(y_predicted[random_index]))

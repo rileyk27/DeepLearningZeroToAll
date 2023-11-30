@@ -3,13 +3,13 @@ import math
 import mxnet as mx
 import mxnet.ndarray as nd
 import numpy as np
-import random
 from sklearn.datasets import fetch_mldata
+import secrets
 
 # set the seeds. However, this does not guarantee that the result will always be the same since CUDNN is non-deterministic
 np.random.seed(777)
 mx.random.seed(77)
-random.seed(7777)
+secrets.SystemRandom().seed(7777)
 
 # 1. Loading MNIST
 mnist = fetch_mldata(dataname='MNIST original')
