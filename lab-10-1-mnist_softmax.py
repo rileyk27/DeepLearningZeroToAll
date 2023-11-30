@@ -1,9 +1,9 @@
 # Lab 7 Learning rate and Evaluation
 import tensorflow as tf
 import matplotlib.pyplot as plt
-import random
 
 from tensorflow.examples.tutorials.mnist import input_data
+import secrets
 
 tf.set_random_seed(777)  # reproducibility
 
@@ -62,7 +62,7 @@ with tf.Session() as sess:
     )
 
     # Get one and predict
-    r = random.randint(0, mnist.test.num_examples - 1)
+    r = secrets.SystemRandom().randint(0, mnist.test.num_examples - 1)
 
     print("Label: ", sess.run(tf.argmax(mnist.test.labels[r : r + 1], axis=1)))
     print(

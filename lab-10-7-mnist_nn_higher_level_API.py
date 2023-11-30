@@ -2,10 +2,10 @@
 from tensorflow.contrib.layers import fully_connected, batch_norm, dropout
 from tensorflow.contrib.framework import arg_scope
 import tensorflow as tf
-import random
 # import matplotlib.pyplot as plt
 
 from tensorflow.examples.tutorials.mnist import input_data
+import secrets
 
 tf.set_random_seed(777)  # reproducibility
 
@@ -89,7 +89,7 @@ print('Accuracy:', sess.run(accuracy, feed_dict={
       X: mnist.test.images, Y: mnist.test.labels, train_mode: False}))
 
 # Get one and predict
-r = random.randint(0, mnist.test.num_examples - 1)
+r = secrets.SystemRandom().randint(0, mnist.test.num_examples - 1)
 print("Label: ", sess.run(tf.argmax(mnist.test.labels[r:r + 1], 1)))
 print("Prediction: ", sess.run(
     tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r:r + 1], train_mode: False}))
